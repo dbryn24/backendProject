@@ -19,7 +19,7 @@ router.post("/inventory", async (req, res) => {
     const newItem = await addItem(req.body);
     res.status(201).json(newItem);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send(error.message
   }
 });
 

@@ -1,3 +1,4 @@
+
 //Layer service adalah layer untuk handle
 //Bussiness logic
 
@@ -19,4 +20,5 @@ const getUserById = async (id) => {
 module.exports = {
   getAllUsers,
   getUserById,
+
 };
