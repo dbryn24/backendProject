@@ -2,31 +2,37 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 
-const Login = () => {
+const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Langsung arahkan ke halaman utama tanpa validasi
-    localStorage.setItem("isLoggedIn", "true");
-    navigate("/");
+    // Simulasi sign up (gunakan fetch jika backend tersedia)
+    if (username && password) {
+      // Simpan data pengguna (contoh sederhana)
+      alert("Account created successfully!");
+      navigate("/login");
+    } else {
+      setError("Please fill in all fields");
+    }
   };
 
   return (
     <div className="login-wrapper">
       <div className="login-left">
-        <h1>Welcome to website</h1>
+        <h1>Join Us</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat.
+          Create an account to access all features and manage your tasks
+          efficiently.
         </p>
       </div>
       <div className="login-right">
-        <form onSubmit={handleLogin} className="login-form">
-          <h2>User Login</h2>
+        <form onSubmit={handleSignUp} className="login-form">
+          <h2>Sign Up</h2>
+          {error && <p className="login-error">{error}</p>}
           <div className="form-group">
             <span className="icon">👤</span>
             <input
@@ -47,23 +53,17 @@ const Login = () => {
               required
             />
           </div>
-          <div className="form-footer">
-            <label>
-              <input type="checkbox" /> Remember
-            </label>
-            <span className="forgot">Forgot password?</span>
-          </div>
           <button type="submit" className="login-btn">
-            LOGIN
+            SIGN UP
           </button>
           <p className="signup-link">
-            Don't have an account?{" "}
+            Already have an account?{" "}
             <span
               className="link"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/login")}
               style={{ color: "#007bff", cursor: "pointer" }}
             >
-              Sign Up
+              Login
             </span>
           </p>
         </form>
@@ -72,4 +72,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

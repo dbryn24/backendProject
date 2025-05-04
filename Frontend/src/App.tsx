@@ -5,7 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Login from "./pages/login"; // Import halaman login
+import Login from "./pages/login";
+import SignUp from "./pages/SignUp"; // Import halaman login
 
 const queryClient = new QueryClient();
 
@@ -19,7 +20,7 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            {/* Jika belum login, arahkan ke halaman login */}
+            <Route path="/signup" element={<SignUp />} />
             <Route
               path="/"
               element={isLoggedIn ? <Index /> : <Navigate to="/login" />}

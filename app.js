@@ -5,6 +5,8 @@ const logger = require("morgan");
 
 const usersController = require("./app/user/inventory.controller");
 const inventoryController = require("./app/inventory/inventory.controller");
+const authController = require("./app/user/auth.controller");
+app.use("/api", authController);
 
 const app = express();
 
