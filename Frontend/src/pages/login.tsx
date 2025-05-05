@@ -9,9 +9,10 @@ const Login = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Langsung arahkan ke halaman utama tanpa validasi
+
     localStorage.setItem("isLoggedIn", "true");
-    navigate("/");
+
+    navigate("/Frontend/src/pages/Index.tsx");
   };
 
   return (

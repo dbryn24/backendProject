@@ -1,6 +1,13 @@
-
 import { Category, Product, Supplier } from "../types/inventory";
-
+export const updateStock = (productId: string, quantity: number): void => {
+  const product = products.find((p) => p.id === productId);
+  if (product) {
+    product.stockQuantity += quantity;
+    if (product.stockQuantity < 0) {
+      product.stockQuantity = 0; // Pastikan stok tidak negatif
+    }
+  }
+};
 export const categories: Category[] = [
   { id: "cat1", name: "Electronics" },
   { id: "cat2", name: "Office Supplies" },
