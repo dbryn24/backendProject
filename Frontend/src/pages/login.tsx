@@ -10,10 +10,12 @@ const Login = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Simpan status login ke localStorage
     localStorage.setItem("isLoggedIn", "true");
 
-    navigate("/Frontend/src/pages/Index.tsx");
-  };
+    // Arahkan ke halaman utama
+    navigate("/");
+  }; // Pastikan fungsi handleLogin ditutup di sini
 
   return (
     <div className="login-wrapper">

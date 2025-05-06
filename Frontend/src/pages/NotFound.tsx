@@ -1,5 +1,9 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import SignUp from "./SignUp";
+import Index from "./Index";
+import Login from "./Login";
 
 const NotFound = () => {
   const location = useLocation();
@@ -24,4 +28,19 @@ const NotFound = () => {
   );
 };
 
+const AppRoutes = ({ isLoggedIn }) => {
+  return (
+    <Routes>
+      <Route path="/signup" element={<SignUp />} />
+      <Route
+        path="/"
+        element={isLoggedIn ? <Index /> : <Navigate to="/login" />}
+      />
+      <Route path="/login" element={<Login />} />
+      <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
+    </Routes>
+  );
+};
+
 export default NotFound;
+export { AppRoutes };
